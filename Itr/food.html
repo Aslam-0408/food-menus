@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    img {
+      width: 200px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #e63946;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    a:hover {
+      background: #1d3557;
+    }
+  </style>
+</head>
+<body>
+  <h1>Food Details</h1>
+  <div id="food-info"></div>
+  <a href="index.html">⬅ Back to Menu</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const item = params.get("item");
+
+    const foods = {
+      pizza: {name: "Pizza", price: "₹250", img: "https://i.imgur.com/eTmWoAN.png"},
+      burger: {name: "Burger", price: "₹120", img: "https://i.imgur.com/5M0Q8Dq.png"},
+      pasta: {name: "Pasta", price: "₹200", img: "https://i.imgur.com/1oHfKQZ.png"},
+      icecream: {name: "Ice Cream", price: "₹90", img: "https://i.imgur.com/VwB7v0H.png"}
+    };
+
+    if (foods[item]) {
+      document.getElementById("food-info").innerHTML = `
+        <h2>${foods[item].name}</h2>
+        <img src="${foods[item].img}" alt="${foods[item].name}">
+        <p>Price: ${foods[item].price}</p>
+      `;
+    } else {
+      document.getElementById("food-info").innerHTML = "<p>Food not found!</p>";
+    }
+  </script>
+</body>
+</html>
